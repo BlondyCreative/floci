@@ -14,7 +14,7 @@ jobs:
           edge-port: 4566
         env:
           # Usaremos el token que guardaste en los Secrets de GitHub
-          LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+         LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
 
       - name: Verify LocalStack
         run: |
