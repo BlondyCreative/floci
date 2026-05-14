@@ -13,7 +13,6 @@ jobs:
         with:
           edge-port: 4566
         env:
-          # Se sincroniza con el secreto que configuraste en Settings > Secrets
           LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
 
       - name: Verify LocalStack
