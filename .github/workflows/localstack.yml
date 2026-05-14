@@ -1,0 +1,23 @@
+name: LocalStack CI
+on: [push]
+
+jobs:
+  localstack-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Start LocalStack
+        uses: localstack/localstack-github-action@main
+        with:
+          edge-port: 4566
+        env:
+          # Usaremos el token que guardaste en los Secrets de GitHub
+          LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+
+      - name: Verify LocalStack
+        run: |
+          pip install awscli-local
+          awslocal s3 mb s3://test-bucket
+          awslocal s3 ls
